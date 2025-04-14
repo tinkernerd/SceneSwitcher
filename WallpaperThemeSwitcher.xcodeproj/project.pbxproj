@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		AFA4E04F2DACA08700A647DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFA4E0382DACA08700A647DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFA4E03F2DACA08700A647DE;
+			remoteInfo = WallpaperThemeSwitcher;
+		};
+		AFA4E0592DACA08700A647DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFA4E0382DACA08700A647DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFA4E03F2DACA08700A647DE;
+			remoteInfo = WallpaperThemeSwitcher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallpaperThemeSwitcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperThemeSwitcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperThemeSwitcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WallpaperThemeSwitcher;
+			sourceTree = "<group>";
+		};
+		AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WallpaperThemeSwitcherTests;
+			sourceTree = "<group>";
+		};
+		AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WallpaperThemeSwitcherUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFA4E03D2DACA08700A647DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E04B2DACA08700A647DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E0552DACA08700A647DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFA4E0372DACA08700A647DE = {
+			isa = PBXGroup;
+			children = (
+				AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */,
+				AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */,
+				AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+				AFA4E0412DACA08700A647DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFA4E0412DACA08700A647DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */,
+				AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */,
+				AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcher" */;
+			buildPhases = (
+				AFA4E03C2DACA08700A647DE /* Sources */,
+				AFA4E03D2DACA08700A647DE /* Frameworks */,
+				AFA4E03E2DACA08700A647DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */,
+			);
+			name = WallpaperThemeSwitcher;
+			packageProductDependencies = (
+			);
+			productName = WallpaperThemeSwitcher;
+			productReference = AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AFA4E04D2DACA08700A647DE /* WallpaperThemeSwitcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherTests" */;
+			buildPhases = (
+				AFA4E04A2DACA08700A647DE /* Sources */,
+				AFA4E04B2DACA08700A647DE /* Frameworks */,
+				AFA4E04C2DACA08700A647DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFA4E0502DACA08700A647DE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */,
+			);
+			name = WallpaperThemeSwitcherTests;
+			packageProductDependencies = (
+			);
+			productName = WallpaperThemeSwitcherTests;
+			productReference = AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AFA4E0572DACA08700A647DE /* WallpaperThemeSwitcherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherUITests" */;
+			buildPhases = (
+				AFA4E0542DACA08700A647DE /* Sources */,
+				AFA4E0552DACA08700A647DE /* Frameworks */,
+				AFA4E0562DACA08700A647DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFA4E05A2DACA08700A647DE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+			);
+			name = WallpaperThemeSwitcherUITests;
+			packageProductDependencies = (
+			);
+			productName = WallpaperThemeSwitcherUITests;
+			productReference = AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFA4E0382DACA08700A647DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					AFA4E03F2DACA08700A647DE = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					AFA4E04D2DACA08700A647DE = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = AFA4E03F2DACA08700A647DE;
+					};
+					AFA4E0572DACA08700A647DE = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = AFA4E03F2DACA08700A647DE;
+					};
+				};
+			};
+			buildConfigurationList = AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "WallpaperThemeSwitcher" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFA4E0372DACA08700A647DE;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AFA4E0412DACA08700A647DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */,
+				AFA4E04D2DACA08700A647DE /* WallpaperThemeSwitcherTests */,
+				AFA4E0572DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFA4E03E2DACA08700A647DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E04C2DACA08700A647DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E0562DACA08700A647DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFA4E03C2DACA08700A647DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E04A2DACA08700A647DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA4E0542DACA08700A647DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFA4E0502DACA08700A647DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */;
+			targetProxy = AFA4E04F2DACA08700A647DE /* PBXContainerItemProxy */;
+		};
+		AFA4E05A2DACA08700A647DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */;
+			targetProxy = AFA4E0592DACA08700A647DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AFA4E0602DACA08700A647DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AFA4E0612DACA08700A647DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AFA4E0632DACA08700A647DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WallpaperThemeSwitcher/WallpaperThemeSwitcher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AFA4E0642DACA08700A647DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WallpaperThemeSwitcher/WallpaperThemeSwitcher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AFA4E0662DACA08700A647DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WallpaperThemeSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WallpaperThemeSwitcher";
+			};
+			name = Debug;
+		};
+		AFA4E0672DACA08700A647DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WallpaperThemeSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WallpaperThemeSwitcher";
+			};
+			name = Release;
+		};
+		AFA4E0692DACA08700A647DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = WallpaperThemeSwitcher;
+			};
+			name = Debug;
+		};
+		AFA4E06A2DACA08700A647DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2W98Y9LVLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = WallpaperThemeSwitcher;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "WallpaperThemeSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA4E0602DACA08700A647DE /* Debug */,
+				AFA4E0612DACA08700A647DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA4E0632DACA08700A647DE /* Debug */,
+				AFA4E0642DACA08700A647DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA4E0662DACA08700A647DE /* Debug */,
+				AFA4E0672DACA08700A647DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA4E0692DACA08700A647DE /* Debug */,
+				AFA4E06A2DACA08700A647DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFA4E0382DACA08700A647DE /* Project object */;
+}
