@@ -15,6 +15,8 @@ struct SettingsView: View {
     @AppStorage("quitWarningEnabled") var quitWarningEnabled: Bool = true
     @AppStorage("rotationPaused") var rotationPaused: Bool = false
     @AppStorage("disableOnBattery") var disableOnBattery: Bool = false
+    @AppStorage("flattenSingleSubthemes") var flattenSingleSubthemes: Bool = false
+
 
 
 
@@ -44,14 +46,8 @@ struct SettingsView: View {
                         }
                     }
                 }
-
-                Button("Reset to Default") {
-                    wallpaperDirectory = ThemeLoader.defaultPath.path
-                }
-            }
-            Divider()
-
-            VStack(alignment: .leading, spacing: 12) {
+                Toggle("Treat single-subtheme folders as flat themes", isOn: $flattenSingleSubthemes)
+                Divider()
                 Toggle("Launch at Login", isOn: $launchAtLogin)
                     .onChange(of: launchAtLogin) {
                         updateLaunchAtLogin()
@@ -118,4 +114,7 @@ struct SettingsView: View {
             NSWorkspace.shared.open(url)
         }
     }
+}
+#Preview {
+    SettingsView()
 }

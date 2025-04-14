@@ -68,7 +68,12 @@ class ThemeLoader {
                         WallpaperTheme(name: $0.lastPathComponent, folderURL: $0)
                     }.filter { !$0.imageURLs.isEmpty }
 
-                    if !subThemes.isEmpty {
+                    let flatten = UserDefaults.standard.bool(forKey: "flattenSingleSubthemes")
+                    if flatten, subThemes.count == 1 {
+                        let single = WallpaperTheme(name: folder.lastPathComponent, folderURL: subThemes[0].folderURL)
+                        flatThemes.append(single)
+                    }
+                        else if !subThemes.isEmpty {
                         let group = ThemeGroup(name: folder.lastPathComponent, themes: subThemes)
                         groupedThemes.append(group)
                     }
