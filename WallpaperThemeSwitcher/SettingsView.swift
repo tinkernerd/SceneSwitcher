@@ -80,7 +80,7 @@ struct SettingsView: View {
                     Text("Wallpaper Theme Switcher")
                         .font(.headline)
 
-                    Text("Version 1.0")
+                    Text("Version 0.0.1")
                         .font(.caption)
                         .foregroundColor(.secondary)
 
