@@ -1,12 +1,6 @@
-Here’s a clean and informative `README.md` for your GitHub repo:
-
----
-
 ## 📸 Wallpaper Theme Switcher for macOS
 
 A lightweight macOS menu bar app that lets you switch between organized wallpaper themes, rotate wallpapers on a timer, and manage everything from a slick native UI.
-
-![App Banner or Screenshot Placeholder]
 
 ---
 
@@ -71,7 +65,7 @@ Organize your wallpapers like this:
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/tinkernerd/MacWallpaperThemeSwitcher.git
+   git clone https://github.com/tinkernerd/Wallpaper-Theme-Switcher.git
    ```
 2. Open in Xcode
 3. Build and run
@@ -93,6 +87,3 @@ Organize your wallpapers like this:
 
 MIT © [tinkernerd](https://github.com/tinkernerd)
 
----
-
-Want to include a screenshot or animated preview? I can help format a banner or preview image for GitHub too — just let me know!
