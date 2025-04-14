@@ -56,7 +56,9 @@ class ThemeLoader {
                 if themeSubfolders.isEmpty {
                     print("✅ Flat Theme: \(folder.lastPathComponent)")
                     let theme = WallpaperTheme(name: folder.lastPathComponent, folderURL: folder)
-                    flatThemes.append(theme)
+                    if !theme.imageURLs.isEmpty {
+                        flatThemes.append(theme)
+                    }
                 } else {
                     print("📁 Theme Group: \(folder.lastPathComponent)")
                     for sub in themeSubfolders {
@@ -64,9 +66,12 @@ class ThemeLoader {
                     }
                     let subThemes = themeSubfolders.map {
                         WallpaperTheme(name: $0.lastPathComponent, folderURL: $0)
+                    }.filter { !$0.imageURLs.isEmpty }
+
+                    if !subThemes.isEmpty {
+                        let group = ThemeGroup(name: folder.lastPathComponent, themes: subThemes)
+                        groupedThemes.append(group)
                     }
-                    let group = ThemeGroup(name: folder.lastPathComponent, themes: subThemes)
-                    groupedThemes.append(group)
                 }
             }
 
