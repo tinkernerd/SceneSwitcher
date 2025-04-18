@@ -23,60 +23,23 @@ struct PreviewView: View {
                 .bold()
 
             if let themePath = WallpaperManager.currentThemePath() {
-                let basePath = ThemeLoader.currentDirectory
-                let relativeComponents = themePath.path
-                    .replacingOccurrences(of: basePath.path + "/", with: "")
+                let rawComponents = themePath.path
+                    .replacingOccurrences(of: ThemeLoader.currentDirectory.path + "/", with: "")
                     .components(separatedBy: "/")
 
-                HStack(spacing: 4) {
-                    if relativeComponents.count == 1 {
-                        // 🔹 Only a main theme
-                        let mainPath = basePath.appendingPathComponent(relativeComponents[0])
+                let formattedName = rawComponents
+                    .map { formatThemeName($0) }
+                    .joined(separator: " / ")
 
-                        Button(action: {
-                            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: mainPath.path)
-                        }) {
-                            Label(relativeComponents[0], systemImage: "folder")
-                        }
-                        .buttonStyle(LinkButtonStyle())
-                        .onHover { inside in
-                            if inside { NSCursor.pointingHand.push() }
-                            else { NSCursor.pop() }
-                        }
-
-                    } else if relativeComponents.count == 2 {
-                        // 🔹 Main / Subtheme (two folders)
-                        let mainTheme = relativeComponents[0]
-                        let subTheme = relativeComponents[1]
-
-                        let mainPath = basePath.appendingPathComponent(mainTheme)
-                        let subPath = mainPath.appendingPathComponent(subTheme)
-
-                        Button(action: {
-                            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: mainPath.path)
-                        }) {
-                            Text(mainTheme)
-                        }
-                        .buttonStyle(LinkButtonStyle())
-                        .onHover { inside in
-                            if inside { NSCursor.pointingHand.push() }
-                            else { NSCursor.pop() }
-                        }
-
-                        Text("/")
-                            .foregroundColor(.secondary)
-
-                        Button(action: {
-                            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: subPath.path)
-                        }) {
-                            Text(subTheme)
-                        }
-                        .buttonStyle(LinkButtonStyle())
-                        .onHover { inside in
-                            if inside { NSCursor.pointingHand.push() }
-                            else { NSCursor.pop() }
-                        }
-                    }
+                Button(action: {
+                    NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: themePath.path)
+                }) {
+                    Label(formattedName, systemImage: "folder")
+                }
+                .buttonStyle(LinkButtonStyle())
+                .onHover { inside in
+                    if inside { NSCursor.pointingHand.push() }
+                    else { NSCursor.pop() }
                 }
             } else {
                 Text("None")
@@ -89,7 +52,7 @@ struct PreviewView: View {
 
             if let wallpaper = currentWallpaper {
                 Button(action: {
-                    NSWorkspace.shared.activateFileViewerSelecting([wallpaper])
+                    NSWorkspace.shared.open(wallpaper)
                 }) {
                     Label(wallpaper.lastPathComponent, systemImage: "photo")
                 }
@@ -98,6 +61,7 @@ struct PreviewView: View {
                     if inside { NSCursor.pointingHand.push() }
                     else { NSCursor.pop() }
                 }
+
                 if let nsImage = NSImage(contentsOf: wallpaper) {
                     Button(action: {
                         NSWorkspace.shared.open(wallpaper)
@@ -114,7 +78,6 @@ struct PreviewView: View {
                         if inside { NSCursor.pointingHand.push() }
                         else { NSCursor.pop() }
                     }
-
                 }
             } else {
                 Text("No wallpaper currently set.")
@@ -130,7 +93,17 @@ struct PreviewView: View {
             currentThemeName = UserDefaults.standard.string(forKey: "lastUsedTheme") ?? "None"
         }
     }
+
+    func formatThemeName(_ raw: String) -> String {
+        raw
+            .replacingOccurrences(of: "_", with: " ")
+            .replacingOccurrences(of: "-", with: " ")
+            .split(separator: " ")
+            .map { $0.capitalized }
+            .joined(separator: " ")
+    }
 }
+
 #Preview {
     PreviewView()
 }

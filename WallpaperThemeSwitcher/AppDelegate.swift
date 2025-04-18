@@ -165,9 +165,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             uninstall.target = self
             settingsMenu.addItem(uninstall)
 
-            let settingsParent = NSMenuItem(title: "Settings", action: nil, keyEquivalent: "")
+            let settingsParent = NSMenuItem(title: "Settings", action: #selector(self.showSettings), keyEquivalent: "")
+            settingsParent.target = self
             menu.setSubmenu(settingsMenu, for: settingsParent)
             menu.addItem(settingsParent)
+
 
             // Preview
             let previewItem = NSMenuItem(title: "Preview", action: #selector(self.showPreview), keyEquivalent: "p")
@@ -180,7 +182,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             // Reapply last used
             if let lastUsed = UserDefaults.standard.string(forKey: "lastUsedTheme"),
-               let matchedTheme = allThemes.first(where: { $0.name == lastUsed }) {
+               let matchedTheme = allThemes.first(where: { $0.name == lastUsed }),
+               matchedTheme.name != self.currentTheme?.name {
                 self.currentTheme = matchedTheme
                 WallpaperManager.applyTheme(matchedTheme)
                 self.startWallpaperRotationTimer()
