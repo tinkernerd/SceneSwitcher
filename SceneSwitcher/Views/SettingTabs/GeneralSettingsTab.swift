@@ -1,13 +1,6 @@
-//
-//  GeneralSettingsTab.swift
-//  WallpaperThemeSwitcher
-//
-//  Created by Nick Stull on 4/18/25.
-//
-
 import SwiftUI
 import ServiceManagement
-    
+
 struct GeneralSettingsTab: View {
     @ObservedObject private var settings = SettingsStore.shared
     @State private var hasAttemptedValidation = false
@@ -42,10 +35,12 @@ struct GeneralSettingsTab: View {
 
                 Toggle("Treat single-subtheme folders as flat themes", isOn: $settings.flattenSingleSubthemes)
                 Divider()
+
                 Toggle("Launch at Login", isOn: $settings.launchAtLogin)
                     .onChange(of: settings.launchAtLogin) {
                         updateLaunchAtLogin()
                     }
+
                 Toggle("Show Quit Confirmation", isOn: $settings.quitWarningEnabled)
 
                 Text("Rotation:")
@@ -58,13 +53,14 @@ struct GeneralSettingsTab: View {
                 Toggle("Pause Wallpaper Rotation", isOn: $settings.rotationPaused)
                 Toggle("Disable Rotation on Battery", isOn: $settings.disableOnBattery)
             }
+
             Divider()
             Text("Flickr API")
                 .font(.headline)
 
             Text("Flickr API Key:")
                 .bold()
-            
+
             TextField("Flickr API Key", text: $settings.flickrApiKey, onCommit: {
                 Task {
                     hasAttemptedValidation = true
@@ -72,6 +68,7 @@ struct GeneralSettingsTab: View {
                 }
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
+
             if hasAttemptedValidation {
                 if keyIsValid == true {
                     Text("✅ Key is valid")
@@ -84,6 +81,7 @@ struct GeneralSettingsTab: View {
 
             Divider()
             Text("Reset Options: ").bold() + Text("Cannot Undo!")
+
             HStack(spacing: 12) {
                 Button("Reset App Settings", role: .destructive) {
                     if let bundleID = Bundle.main.bundleIdentifier {
@@ -95,7 +93,6 @@ struct GeneralSettingsTab: View {
 
                 Button("Remove Flickr API Key") {
                     SettingsStore.shared.flickrApiKey = ""
-                    print("🔑 Flickr API key removed.")
                 }
 
                 Button("Set to Default Folder") {
@@ -104,19 +101,14 @@ struct GeneralSettingsTab: View {
                     if !FileManager.default.fileExists(atPath: defaultURL.path) {
                         do {
                             try FileManager.default.createDirectory(at: defaultURL, withIntermediateDirectories: true)
-                            print("📂 Created Wallpapers folder at \(defaultURL.path)")
                         } catch {
-                            print("❌ Failed to create default folder: \(error)")
                             return
                         }
                     }
 
                     SettingsStore.shared.wallpaperDirectory = defaultURL.path
-                    print("✅ Wallpaper folder set to: \(defaultURL.path)")
                 }
             }
-
-
         }
         .padding(24)
     }
@@ -126,13 +118,11 @@ struct GeneralSettingsTab: View {
         do {
             if settings.launchAtLogin {
                 try loginService.register()
-                print("✅ App set to launch at login.")
             } else {
                 try loginService.unregister()
-                print("✅ App removed from login items.")
             }
         } catch {
-            print("❌ Failed to update login item: \(error)")
+            AppLog.error("❌ Failed to update login item: \(error)")
         }
     }
 }

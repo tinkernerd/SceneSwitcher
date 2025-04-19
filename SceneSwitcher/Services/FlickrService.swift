@@ -23,37 +23,38 @@ class FlickrService {
             return false
         }
     }
+
     // MARK: - Fetch Photos from Album
     func fetchAlbumPhotos(photosetId: String, userId: String, completion: @escaping ([FlickrPhoto]) -> Void) {
         guard !apiKey.isEmpty else {
-            print("⚠️ Flickr API key not set")
+            AppLog.warn("⚠️ Flickr API key not set")
             completion([])
             return
         }
 
         let urlString = "\(baseURL)?method=flickr.photosets.getPhotos&api_key=\(apiKey)&photoset_id=\(photosetId)&user_id=\(userId)&extras=width_o,height_o&format=json&nojsoncallback=1"
-        print("📸 Fetching album photos: \(urlString)")
+        AppLog.info("📸 Fetching album photos: \(urlString)")
 
         guard let url = URL(string: urlString) else {
-            print("❌ Invalid URL")
+            AppLog.error("❌ Invalid URL")
             completion([])
             return
         }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print("❌ No data: \(error?.localizedDescription ?? "unknown error")")
+                AppLog.error("❌ No data: \(error?.localizedDescription ?? "unknown error")")
                 completion([])
                 return
             }
 
             if let raw = String(data: data, encoding: .utf8) {
-                print("📦 Album photos raw response: \(raw)")
+                AppLog.info("📦 Album photos raw response: \(raw)")
             }
 
             if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                json["stat"] as? String == "fail" {
-                print("❌ Flickr API Error: \(json)")
+                AppLog.error("❌ Flickr API Error: \(json)")
                 completion([])
                 return
             }
@@ -62,7 +63,7 @@ class FlickrService {
                 let result = try JSONDecoder().decode(FlickrPhotosetResponse.self, from: data)
                 completion(result.photoset.photo)
             } catch {
-                print("❌ JSON decode failed: \(error)")
+                AppLog.error("❌ JSON decode failed: \(error)")
                 completion([])
             }
         }.resume()
@@ -84,36 +85,36 @@ class FlickrService {
     // MARK: - Lookup User ID & Username from Album URL
     func lookupUserId(from url: String, completion: @escaping (String?, String?) -> Void) {
         guard !apiKey.isEmpty else {
-            print("⚠️ Flickr API key not set")
+            AppLog.warn("⚠️ Flickr API key not set")
             completion(nil, nil)
             return
         }
 
         let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let lookupUrl = "\(baseURL)?method=flickr.urls.lookupUser&api_key=\(apiKey)&url=\(encodedUrl)&format=json&nojsoncallback=1"
-        print("👤 Lookup user URL: \(lookupUrl)")
+        AppLog.info("👤 Lookup user URL: \(lookupUrl)")
 
         guard let url = URL(string: lookupUrl) else {
-            print("❌ Invalid lookup URL")
+            AppLog.error("❌ Invalid lookup URL")
             completion(nil, nil)
             return
         }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print("❌ No data: \(error?.localizedDescription ?? "unknown error")")
+                AppLog.error("❌ No data: \(error?.localizedDescription ?? "unknown error")")
                 completion(nil, nil)
                 return
             }
 
             do {
                 let result = try JSONDecoder().decode(FlickrLookupUserResponse.self, from: data)
-                print("✅ User ID: \(result.user.id), Username: \(result.user.username.content)")
+                AppLog.info("✅ User ID: \(result.user.id), Username: \(result.user.username.content)")
                 completion(result.user.id, result.user.username.content)
             } catch {
-                print("❌ Lookup decode failed: \(error)")
+                AppLog.error("❌ Lookup decode failed: \(error)")
                 if let raw = String(data: data, encoding: .utf8) {
-                    print("📦 User lookup response: \(raw)")
+                    AppLog.info("📦 User lookup response: \(raw)")
                 }
                 completion(nil, nil)
             }
@@ -123,41 +124,40 @@ class FlickrService {
     // MARK: - Fetch Album Title
     func fetchAlbumTitle(photosetId: String, userId: String, completion: @escaping (String?) -> Void) {
         guard !apiKey.isEmpty else {
-            print("⚠️ Flickr API key not set")
+            AppLog.warn("⚠️ Flickr API key not set")
             completion(nil)
             return
         }
 
         let urlString = "\(baseURL)?method=flickr.photosets.getInfo&api_key=\(apiKey)&photoset_id=\(photosetId)&user_id=\(userId)&format=json&nojsoncallback=1"
-        print("📝 Fetching album title: \(urlString)")
+        AppLog.info("📝 Fetching album title: \(urlString)")
 
         guard let url = URL(string: urlString) else {
-            print("❌ Invalid album info URL")
+            AppLog.error("❌ Invalid album info URL")
             completion(nil)
             return
         }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print("❌ No data for album info: \(error?.localizedDescription ?? "unknown error")")
+                AppLog.error("❌ No data for album info: \(error?.localizedDescription ?? "unknown error")")
                 completion(nil)
                 return
             }
 
             if let raw = String(data: data, encoding: .utf8) {
-                print("📦 Album info response: \(raw)")
+                AppLog.info("📦 Album info response: \(raw)")
             }
 
             do {
                 let result = try JSONDecoder().decode(FlickrAlbumInfoResponse.self, from: data)
-                print("✅ Album title: \(result.photoset.title.content)")
+                AppLog.info("✅ Album title: \(result.photoset.title.content)")
                 completion(result.photoset.title.content)
             } catch {
-                print("❌ Failed to decode album title: \(error)")
+                AppLog.error("❌ Failed to decode album title: \(error)")
                 completion(nil)
             }
         }
         .resume()
     }
 }
-

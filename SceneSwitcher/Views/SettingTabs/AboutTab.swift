@@ -57,7 +57,7 @@ struct AboutTab: View {
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
-                print("❌ Failed to fetch release info: \(error?.localizedDescription ?? "Unknown error")")
+                AppLog.error("❌ Failed to fetch release info: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
 
@@ -81,7 +81,7 @@ struct AboutTab: View {
                     }
                 }
             } catch {
-                print("❌ Error parsing release JSON: \(error)")
+                AppLog.error("❌ Error parsing release JSON: \(error)")
             }
         }.resume()
     }

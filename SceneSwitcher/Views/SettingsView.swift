@@ -1,32 +1,56 @@
+//
+//  SettingsView.swift
+//  WallpaperThemeSwitcher
+//
+//  Created by Nick Stull on 4/18/25.
+//
+
 import SwiftUI
 
 enum SettingsTab: Hashable {
-    case general, flickr, preview, about
+    case general, flickr, preview, logging, about
 }
 
 struct SettingsView: View {
     @State private var selectedTab: SettingsTab = .general
+    @ObservedObject private var settings = SettingsStore.shared
 
     var body: some View {
         TabView(selection: $selectedTab) {
             GeneralSettingsTab()
                 .tag(SettingsTab.general)
-                .tabItem {Image(systemName: "gearshape")}
+                .tabItem {
+                    Label("General", systemImage: "gearshape")
+                }
 
             FlickrAlbumsTab()
                 .tag(SettingsTab.flickr)
-                .tabItem {Image(systemName: "photo.stack") }
+                .tabItem {
+                    Label("Flickr", systemImage: "photo.stack")
+                }
 
             PreviewTab()
                 .tag(SettingsTab.preview)
-                .tabItem {Image(systemName: "eye") }
+                .tabItem {
+                    Label("Preview", systemImage: "eye")
+                }
+
+            if !settings.releaseMode {
+                LoggingSettingsTab()
+                    .tag(SettingsTab.logging)
+                    .tabItem {
+                        Label("Logging", systemImage: "terminal")
+                    }
+            }
 
             AboutTab()
                 .tag(SettingsTab.about)
-                .tabItem {Image(systemName: "info.circle") }
+                .tabItem {
+                    Label("About", systemImage: "info.circle")
+                }
         }
-        .onChange(of: selectedTab) { oldValue, newValue in
-            adjustWindowSize(for: newValue)
+        .onChange(of: selectedTab) { _, newTab in
+            adjustWindowSize(for: newTab)
         }
         .frame(minWidth: 500)
     }
@@ -41,6 +65,8 @@ struct SettingsView: View {
         case .flickr:
             newHeight = 480
         case .preview:
+            newHeight = 480
+        case .logging:
             newHeight = 480
         case .about:
             newHeight = 400

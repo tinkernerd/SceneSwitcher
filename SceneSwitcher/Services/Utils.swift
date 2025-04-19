@@ -14,3 +14,4 @@ extension String {
         return allowed
     }
 }
+

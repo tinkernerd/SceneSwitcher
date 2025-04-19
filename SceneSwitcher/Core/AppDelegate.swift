@@ -9,6 +9,7 @@ import Cocoa
 import SwiftUI
 import ServiceManagement
 
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     var currentTheme: WallpaperTheme?
@@ -25,7 +26,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             prefsItem?.target = self
             prefsItem?.action = #selector(showSettings)
         }
+        func application(_ application: NSApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+            return false
+        }
 
+        func application(_ application: NSApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+            return false
+        }
         let fm = FileManager.default
         let currentPath = SettingsStore.shared.wallpaperDirectory
         let defaultPath = ThemeLoader.defaultPath
@@ -49,9 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .alertFirstButtonReturn:
                 do {
                     try fm.createDirectory(at: defaultPath, withIntermediateDirectories: true)
-                    print("📂 Created default Wallpapers folder at: \(defaultPath.path)")
+                    AppLog.info("📂 Created default Wallpapers folder at: \(defaultPath.path)")
                 } catch {
-                    print("❌ Failed to create folder: \(error)")
+                    AppLog.error("❌ Failed to create folder: \(error)")
                     NSApp.terminate(nil)
                 }
 
@@ -64,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 if panel.runModal() == .OK, let selectedURL = panel.url {
                     SettingsStore.shared.wallpaperDirectory = selectedURL.path
-                    print("📁 User-selected folder: \(selectedURL.path)")
+                    AppLog.info("📁 User-selected folder: \(selectedURL.path)")
                 } else {
                     NSApp.terminate(nil)
                 }
@@ -243,46 +250,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func startWallpaperRotationTimer() {
-        rotationTimer?.invalidate()
-        guard currentTheme != nil else { return }
+            rotationTimer?.invalidate()
+            guard currentTheme != nil else { return }
 
-        let interval = UserDefaults.standard.integer(forKey: "rotationInterval")
-        let rotationPaused = UserDefaults.standard.bool(forKey: "rotationPaused")
-        let disableOnBattery = UserDefaults.standard.bool(forKey: "disableOnBattery")
-
-        if rotationPaused {
-            print("⏸ Wallpaper rotation is paused.")
-            return
-        }
-
-        if disableOnBattery, ProcessInfo.processInfo.isLowPowerModeEnabled {
-            print("🔋 Skipping rotation (Low Power Mode enabled).")
-            return
-        }
-
-        guard interval > 0 else {
-            print("⚠️ Invalid interval: \(interval)")
-            return
-        }
-
-        print("🔁 Starting wallpaper rotation every \(interval) minute(s)")
-
-        rotationTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * 60), repeats: true) { [weak self] _ in
-            guard let self = self, let activeTheme = self.currentTheme else { return }
-
-            if disableOnBattery, ProcessInfo.processInfo.isLowPowerModeEnabled {
-                print("🔋 Skipping scheduled rotation (Low Power Mode)")
-                return
-            }
+            let interval = UserDefaults.standard.integer(forKey: "rotationInterval")
+            let rotationPaused = UserDefaults.standard.bool(forKey: "rotationPaused")
+            let disableOnBattery = UserDefaults.standard.bool(forKey: "disableOnBattery")
 
             if rotationPaused {
-                print("⏸ Scheduled rotation skipped (Paused)")
+                AppLog.info("⏸ Wallpaper rotation is paused.")
                 return
             }
 
-            WallpaperManager.applyTheme(activeTheme)
+            if disableOnBattery, ProcessInfo.processInfo.isLowPowerModeEnabled {
+                AppLog.info("🔋 Skipping rotation (Low Power Mode enabled).")
+                return
+            }
+
+            guard interval > 0 else {
+                AppLog.warn("⚠️ Invalid interval: \(interval)")
+                return
+            }
+
+            AppLog.info("🔁 Starting wallpaper rotation every \(interval) minute(s)")
+
+            rotationTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * 60), repeats: true) { [weak self] _ in
+                guard let self = self, let activeTheme = self.currentTheme else { return }
+
+                if disableOnBattery, ProcessInfo.processInfo.isLowPowerModeEnabled {
+                    AppLog.info("🔋 Skipping scheduled rotation (Low Power Mode)")
+                    return
+                }
+
+                if rotationPaused {
+                    AppLog.info("⏸ Scheduled rotation skipped (Paused)")
+                    return
+                }
+
+                WallpaperManager.applyTheme(activeTheme)
+            }
         }
-    }
 
     @objc func showSettings() {
         if settingsWindow == nil {

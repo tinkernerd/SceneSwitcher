@@ -5,6 +5,33 @@ Follows [Semantic Versioning](./VERSIONING.md).
 // I solemnly swear I won't abuse PATCH bumps for typos (probably) — This changelog is mainly for developers (and a little for humans too)
 
 ---
+## [0.2.0] - 2025-04-19
+
+### Added
+- New `Logging` tab in Settings with options to:
+  - Enable/disable terminal logging
+  - Enable/disable file logging
+  - Open latest log in Finder
+  - View latest log in Console
+  - Clear all logs
+- Introduced `AppLog` utility for hybrid logging:
+  - Logs messages to both terminal and file based on user settings
+  - Supports log levels: `info`, `warn`, `error` (with emoji prefixes)
+  - Timestamps are in UTC with local offset (e.g., `2025-04-19T14:00:00Z (+04:00)`)
+  - Logs are saved in `~/Documents/SceneSwitcherLogs/`
+- Logging now splits into separate files:
+  - Per-day and per-level (e.g. `2025-04-19_info.log`, `2025-04-19_error.log`)
+  - Automatically rotates daily for easier management
+- Release Mode setting added:
+  - Disables logging completely and hides the Logging tab when enabled
+
+### Changed
+- Moved all debug `print()` statements to use `AppLog`
+- Refactored SettingsStore to include `loggingEnabled`, `terminalLoggingEnabled`, and `fileLoggingEnabled` flags
+
+### Fixed
+- Crash caused by recursive `AppLog.log` calls
+- Clarified timestamp format and added UTC offset display in log entries
 
 ## [0.2.0] - Upcoming
 > 🚧 **Unreleased — in development on `flickr-integration` branch**

@@ -19,7 +19,7 @@ class WallpaperManager {
             do {
                 try NSWorkspace.shared.setDesktopImageURL(image, for: screen, options: [:])
             } catch {
-                print("Error setting wallpaper: \(error)")
+                AppLog.error("Error setting wallpaper: \(error)")
             }
         }
     }

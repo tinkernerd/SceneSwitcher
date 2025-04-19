@@ -14,6 +14,12 @@ class SettingsStore: ObservableObject {
     @AppStorage("disableOnBattery") var disableOnBattery: Bool = false
     @AppStorage("flattenSingleSubthemes") var flattenSingleSubthemes: Bool = false
 
+    // MARK: - Logging
+    @AppStorage("loggingEnabled") var loggingEnabled: Bool = true
+    @AppStorage("terminalLoggingEnabled") var terminalLoggingEnabled: Bool = true
+    @AppStorage("fileLoggingEnabled") var fileLoggingEnabled: Bool = true
+    @AppStorage("releaseMode") var releaseMode: Bool = false
+
     // MARK: - Flickr
     @Published var isFlickrKeyValid: Bool = false
     @AppStorage("flickrApiKey") var flickrApiKey: String = ""
@@ -28,6 +34,11 @@ class SettingsStore: ObservableObject {
     // MARK: - Init
     init() {
         flickrAlbums = decodeAlbums(from: encodedAlbums)
+
+        // Optional: Automatically enable release mode in production builds
+        #if !DEBUG
+        releaseMode = true
+        #endif
     }
 
     // MARK: - Album Management
@@ -46,6 +57,7 @@ class SettingsStore: ObservableObject {
         }
         saveAlbums()
     }
+
     func updateDownloadProgress(for albumId: String, downloaded: Int, total: Int) {
         flickrAlbums = flickrAlbums.map { album in
             if album.id == albumId {
@@ -69,7 +81,7 @@ class SettingsStore: ObservableObject {
         }
     }
 
-
+    // MARK: - Save / Load Albums
     func saveAlbums() {
         if let data = try? JSONEncoder().encode(flickrAlbums),
            let string = String(data: data, encoding: .utf8) {
