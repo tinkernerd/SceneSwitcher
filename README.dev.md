@@ -65,6 +65,15 @@ To allow file system access, clipboard, and downloads:
 > 🔐 Required for Flickr albums, download folder access, and user interaction
 
 ---
+### 🔖 Tagging a Release
+
+Use [SemVer](./VERSIONING.md) and tag like so:
+
+```bash
+git tag v0.2.0
+git push origin v0.2.0
+```
+---
 
 ## 🔧 Key App Behaviors
 
@@ -110,7 +119,7 @@ To allow file system access, clipboard, and downloads:
 
 | Branch                | Purpose                              |
 |-----------------------|--------------------------------------|
-| `main`                | Stable public releases               |
+| `main`                | Stable public releases ([tags](https://github.com/tinkernerd/SceneSwitcher/tags)) |
 | `flickr-integration`  | Ongoing work toward `v0.2.0`         |
 | `feature/...`         | Experimental or upcoming features    |
 

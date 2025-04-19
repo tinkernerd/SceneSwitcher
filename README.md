@@ -8,10 +8,11 @@
 
 | Version | Status       | Description                             |
 |---------|--------------|-----------------------------------------|
-| ![version](https://img.shields.io/badge/version-0.1.0-blue) | ✅ Released   | Folder-based themes + wallpaper rotation |
-| ![version](https://img.shields.io/badge/version-0.2.0-blue) | 🚧 In Dev     | Flickr integration, photo downloading    |
+| [![version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/tinkernerd/SceneSwitcher/releases/tag/v0.1.0) | ✅ Released   | Folder-based themes + wallpaper rotation |
+| [![version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/tinkernerd/SceneSwitcher/compare/v0.1.0...main) | 🚧 In Dev     | Flickr integration, photo downloading    |
 
-📋 [Changelog](./CHANGELOG.md) — see what’s new!
+
+📋 [Full Changelog →](./CHANGELOG.md) — see what’s new!
 
 ---
 
