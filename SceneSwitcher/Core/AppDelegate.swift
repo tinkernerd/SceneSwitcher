@@ -7,18 +7,74 @@
 
 import Cocoa
 import SwiftUI
+import ServiceManagement
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     var currentTheme: WallpaperTheme?
     var settingsWindow: NSWindow?
-    var previewWindow: NSWindow?
     var rotationTimer: Timer?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.setActivationPolicy(.accessory)
+        NSApp.setActivationPolicy(.regular)
         setupMenu()
+
+        if let mainMenu = NSApp.mainMenu {
+            let appMenu = mainMenu.items.first?.submenu
+            let prefsItem = appMenu?.items.first(where: { $0.title.contains("Preferences") })
+            prefsItem?.target = self
+            prefsItem?.action = #selector(showSettings)
+        }
+
+        let fm = FileManager.default
+        let currentPath = SettingsStore.shared.wallpaperDirectory
+        let defaultPath = ThemeLoader.defaultPath
+        let isUsingDefault = (currentPath == defaultPath.path)
+        let defaultFolderMissing = !fm.fileExists(atPath: defaultPath.path)
+
+        if isUsingDefault && defaultFolderMissing {
+            let alert = NSAlert()
+            alert.messageText = "Wallpapers Folder Not Found"
+            alert.informativeText = """
+            The folder \"Pictures/Wallpapers\" doesn't exist. What would you like to do?
+            """
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "Create Default Folder")
+            alert.addButton(withTitle: "Choose Different Folder")
+            alert.addButton(withTitle: "Exit App")
+
+            let response = alert.runModal()
+
+            switch response {
+            case .alertFirstButtonReturn:
+                do {
+                    try fm.createDirectory(at: defaultPath, withIntermediateDirectories: true)
+                    print("📂 Created default Wallpapers folder at: \(defaultPath.path)")
+                } catch {
+                    print("❌ Failed to create folder: \(error)")
+                    NSApp.terminate(nil)
+                }
+
+            case .alertSecondButtonReturn:
+                let panel = NSOpenPanel()
+                panel.message = "Choose a folder to use for wallpapers"
+                panel.canChooseDirectories = true
+                panel.canChooseFiles = false
+                panel.allowsMultipleSelection = false
+
+                if panel.runModal() == .OK, let selectedURL = panel.url {
+                    SettingsStore.shared.wallpaperDirectory = selectedURL.path
+                    print("📁 User-selected folder: \(selectedURL.path)")
+                } else {
+                    NSApp.terminate(nil)
+                }
+
+            default:
+                NSApp.terminate(nil)
+            }
+        }
     }
+
 
     func setupMenu() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -36,61 +92,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(nextItem)
 
         menu.addItem(NSMenuItem.separator())
-        
-        // Preview (top level)
-        let previewItem = NSMenuItem(title: "Preview", action: #selector(self.showPreview), keyEquivalent: "p")
-        previewItem.target = self
-        menu.addItem(previewItem)
 
-        // Settings with submenu
-        let settingsMenu = NSMenu(title: "Settings")
+        refreshThemes()
 
-        let preferencesItem = NSMenuItem(title: "Preferences...", action: #selector(self.showSettings), keyEquivalent: ",")
-        preferencesItem.target = self
-        settingsMenu.addItem(preferencesItem)
+        // Add system items
+        menu.addItem(NSMenuItem.separator())
 
-        let checkUpdates = NSMenuItem(title: "Check for Updates", action: #selector(self.checkForUpdates), keyEquivalent: "")
-        checkUpdates.target = self
-        settingsMenu.addItem(checkUpdates)
+        let settingsItem = NSMenuItem(title: "Settings", action: #selector(self.showSettings), keyEquivalent: ",")
+        settingsItem.target = self
+        menu.addItem(settingsItem)
 
         let uninstall = NSMenuItem(title: "Uninstall", action: #selector(self.uninstallApp), keyEquivalent: "")
         uninstall.target = self
-        settingsMenu.addItem(uninstall)
-
-        let settingsParent = NSMenuItem(title: "Settings", action: nil, keyEquivalent: "")
-        menu.setSubmenu(settingsMenu, for: settingsParent)
-        menu.addItem(settingsParent)
-
+        menu.addItem(uninstall)
 
         menu.addItem(NSMenuItem.separator())
 
         let quitItem = NSMenuItem(title: "Quit", action: #selector(self.quit), keyEquivalent: "q")
         menu.addItem(quitItem)
-
-        refreshThemes()
-    }
-    func formatThemeName(_ raw: String) -> String {
-        raw
-            .replacingOccurrences(of: "_", with: " ")
-            .replacingOccurrences(of: "-", with: " ")
-            .split(separator: " ")
-            .map { $0.capitalized }
-            .joined(separator: " ")
     }
 
     func refreshThemes() {
         ThemeLoader.loadThemes { flatThemes, groupedThemes in
             guard let menu = self.statusItem.menu else { return }
 
-            // Remove all existing theme menu items
+            // Remove all existing items first
             menu.items.removeAll()
 
-            // Prepare recent themes
+            // Next wallpaper
+            let nextItem = NSMenuItem(title: "Next Wallpaper", action: #selector(self.nextWallpaper), keyEquivalent: "n")
+            nextItem.target = self
+            menu.addItem(nextItem)
+            menu.addItem(NSMenuItem.separator())
+
+            // Recent themes
             let recent = UserDefaults.standard.stringArray(forKey: "recentThemes") ?? []
             let allThemes = flatThemes + groupedThemes.flatMap { $0.themes }
             let recentThemes = recent.compactMap { name in allThemes.first(where: { $0.name == name }) }
 
-            // Add recent section
             if !recentThemes.isEmpty {
                 let titleItem = NSMenuItem(title: "Recent", action: nil, keyEquivalent: "")
                 titleItem.isEnabled = false
@@ -107,10 +146,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 menu.addItem(NSMenuItem.separator())
             }
 
-            // Build Themes submenu
+            // Themes submenu
             let themesMenu = NSMenu(title: "Themes")
 
-            // Sort alphabetically
             let sortedFlat = flatThemes.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
             for theme in sortedFlat {
                 let displayName = self.formatThemeName(theme.name)
@@ -139,48 +177,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 themesMenu.addItem(groupItem)
             }
 
-            // Add Themes submenu to main menu
             let themesParent = NSMenuItem(title: "Themes", action: nil, keyEquivalent: "")
             menu.setSubmenu(themesMenu, for: themesParent)
             menu.addItem(themesParent)
 
-            // Add system items
+            // Separator
             menu.addItem(NSMenuItem.separator())
 
-            let nextItem = NSMenuItem(title: "Next Wallpaper", action: #selector(self.nextWallpaper), keyEquivalent: "n")
-            nextItem.target = self
-            menu.addItem(nextItem)
+            // Settings
+            let settingsItem = NSMenuItem(title: "Settings", action: #selector(self.showSettings), keyEquivalent: ",")
+            settingsItem.target = self
+            menu.addItem(settingsItem)
 
-            menu.addItem(NSMenuItem.separator())
-
-            // Settings Menu
-            let settingsMenu = NSMenu(title: "Settings")
-            let preferencesItem = NSMenuItem(title: "Preferences...", action: #selector(self.showSettings), keyEquivalent: ",")
-            preferencesItem.target = self
-            settingsMenu.addItem(preferencesItem)
-            let checkUpdates = NSMenuItem(title: "Check for Updates", action: #selector(self.checkForUpdates), keyEquivalent: "")
-            checkUpdates.target = self
-            settingsMenu.addItem(checkUpdates)
+            // Uninstall
             let uninstall = NSMenuItem(title: "Uninstall", action: #selector(self.uninstallApp), keyEquivalent: "")
             uninstall.target = self
-            settingsMenu.addItem(uninstall)
+            menu.addItem(uninstall)
 
-            let settingsParent = NSMenuItem(title: "Settings", action: #selector(self.showSettings), keyEquivalent: "")
-            settingsParent.target = self
-            menu.setSubmenu(settingsMenu, for: settingsParent)
-            menu.addItem(settingsParent)
-
-
-            // Preview
-            let previewItem = NSMenuItem(title: "Preview", action: #selector(self.showPreview), keyEquivalent: "p")
-            previewItem.target = self
-            menu.addItem(previewItem)
-
+            // Separator
             menu.addItem(NSMenuItem.separator())
 
-            menu.addItem(NSMenuItem(title: "Quit", action: #selector(self.quit), keyEquivalent: "q"))
+            // Quit
+            let quitItem = NSMenuItem(title: "Quit", action: #selector(self.quit), keyEquivalent: "q")
+            menu.addItem(quitItem)
 
-            // Reapply last used
+            // Auto-apply last theme
             if let lastUsed = UserDefaults.standard.string(forKey: "lastUsedTheme"),
                let matchedTheme = allThemes.first(where: { $0.name == lastUsed }),
                matchedTheme.name != self.currentTheme?.name {
@@ -191,23 +212,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func formatThemeName(_ raw: String) -> String {
+        raw
+            .replacingOccurrences(of: "_", with: " ")
+            .replacingOccurrences(of: "-", with: " ")
+            .split(separator: " ")
+            .map { $0.capitalized }
+            .joined(separator: " ")
+    }
 
     @objc func setTheme(_ sender: NSMenuItem) {
         guard let theme = sender.representedObject as? WallpaperTheme else { return }
         currentTheme = theme
         UserDefaults.standard.set(theme.name, forKey: "lastUsedTheme")
 
-        // Track recent themes
         var recent = UserDefaults.standard.stringArray(forKey: "recentThemes") ?? []
-        recent.removeAll(where: { $0 == theme.name }) // remove duplicates
-        recent.insert(theme.name, at: 0) // insert at top
+        recent.removeAll(where: { $0 == theme.name })
+        recent.insert(theme.name, at: 0)
         if recent.count > 3 { recent = Array(recent.prefix(3)) }
         UserDefaults.standard.set(recent, forKey: "recentThemes")
 
         WallpaperManager.applyTheme(theme)
         startWallpaperRotationTimer()
-        self.refreshThemes() // 👈 This redraws the menu including "Recent"
-
+        self.refreshThemes()
     }
 
     @objc func nextWallpaper() {
@@ -217,7 +244,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func startWallpaperRotationTimer() {
         rotationTimer?.invalidate()
-
         guard currentTheme != nil else { return }
 
         let interval = UserDefaults.standard.integer(forKey: "rotationInterval")
@@ -258,7 +284,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-
     @objc func showSettings() {
         if settingsWindow == nil {
             let window = NSWindow(
@@ -278,32 +303,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         settingsWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
-    }
-
-    @objc func showPreview() {
-        if previewWindow == nil {
-            let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 600, height: 560), // 👈 increased height
-                styleMask: [.titled, .closable, .resizable],
-                backing: .buffered,
-                defer: false
-            )
-            window.center()
-            window.title = "Preview"
-            window.isReleasedWhenClosed = false
-            window.delegate = self
-            window.contentView = NSHostingView(rootView: PreviewView())
-            previewWindow = window
-        }
-
-        previewWindow?.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
-    }
-
-    @objc func checkForUpdates() {
-        if let url = URL(string: "https://github.com/tinkernerd/MacWallpaperThemeSwitcher/releases") {
-            NSWorkspace.shared.open(url)
-        }
     }
 
     @objc func uninstallApp() {
@@ -328,14 +327,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButton(withTitle: "Cancel")
 
             if alert.runModal() != .alertFirstButtonReturn {
-                return // User hit Cancel
+                return
             }
         }
 
         rotationTimer?.invalidate()
         NSApplication.shared.terminate(nil)
     }
-
 }
 
 extension AppDelegate: NSWindowDelegate {
@@ -343,9 +341,7 @@ extension AppDelegate: NSWindowDelegate {
         if let window = notification.object as? NSWindow {
             if window == settingsWindow {
                 settingsWindow = nil
-                refreshThemes() // 👈 Refresh menu when Preferences window is closed
-            } else if window == previewWindow {
-                previewWindow = nil
+                refreshThemes()
             }
         }
     }

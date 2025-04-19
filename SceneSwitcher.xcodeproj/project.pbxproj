@@ -24,25 +24,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallpaperThemeSwitcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperThemeSwitcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperThemeSwitcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA4E0402DACA08700A647DE /* Scene Switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scene Switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA4E04E2DACA08700A647DE /* SceneSwitcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SceneSwitcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA4E0582DACA08700A647DE /* SceneSwitcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SceneSwitcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */ = {
+		AFA4E0422DACA08700A647DE /* SceneSwitcher */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WallpaperThemeSwitcher;
+			path = SceneSwitcher;
 			sourceTree = "<group>";
 		};
-		AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */ = {
+		AFA4E0512DACA08700A647DE /* SceneSwitcherTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WallpaperThemeSwitcherTests;
+			path = SceneSwitcherTests;
 			sourceTree = "<group>";
 		};
-		AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */ = {
+		AFA4E05B2DACA08700A647DE /* SceneSwitcherUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WallpaperThemeSwitcherUITests;
+			path = SceneSwitcherUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		AFA4E0372DACA08700A647DE = {
 			isa = PBXGroup;
 			children = (
-				AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */,
-				AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */,
-				AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+				AFA4E0422DACA08700A647DE /* SceneSwitcher */,
+				AFA4E0512DACA08700A647DE /* SceneSwitcherTests */,
+				AFA4E05B2DACA08700A647DE /* SceneSwitcherUITests */,
 				AFA4E0412DACA08700A647DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		AFA4E0412DACA08700A647DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */,
-				AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */,
-				AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */,
+				AFA4E0402DACA08700A647DE /* Scene Switcher.app */,
+				AFA4E04E2DACA08700A647DE /* SceneSwitcherTests.xctest */,
+				AFA4E0582DACA08700A647DE /* SceneSwitcherUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */ = {
+		AFA4E03F2DACA08700A647DE /* SceneSwitcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcher" */;
+			buildConfigurationList = AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcher" */;
 			buildPhases = (
 				AFA4E03C2DACA08700A647DE /* Sources */,
 				AFA4E03D2DACA08700A647DE /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				AFA4E0422DACA08700A647DE /* WallpaperThemeSwitcher */,
+				AFA4E0422DACA08700A647DE /* SceneSwitcher */,
 			);
-			name = WallpaperThemeSwitcher;
+			name = SceneSwitcher;
 			packageProductDependencies = (
 			);
 			productName = WallpaperThemeSwitcher;
-			productReference = AFA4E0402DACA08700A647DE /* WallpaperThemeSwitcher.app */;
+			productReference = AFA4E0402DACA08700A647DE /* Scene Switcher.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AFA4E04D2DACA08700A647DE /* WallpaperThemeSwitcherTests */ = {
+		AFA4E04D2DACA08700A647DE /* SceneSwitcherTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherTests" */;
+			buildConfigurationList = AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcherTests" */;
 			buildPhases = (
 				AFA4E04A2DACA08700A647DE /* Sources */,
 				AFA4E04B2DACA08700A647DE /* Frameworks */,
@@ -131,18 +131,18 @@
 				AFA4E0502DACA08700A647DE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				AFA4E0512DACA08700A647DE /* WallpaperThemeSwitcherTests */,
+				AFA4E0512DACA08700A647DE /* SceneSwitcherTests */,
 			);
-			name = WallpaperThemeSwitcherTests;
+			name = SceneSwitcherTests;
 			packageProductDependencies = (
 			);
 			productName = WallpaperThemeSwitcherTests;
-			productReference = AFA4E04E2DACA08700A647DE /* WallpaperThemeSwitcherTests.xctest */;
+			productReference = AFA4E04E2DACA08700A647DE /* SceneSwitcherTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AFA4E0572DACA08700A647DE /* WallpaperThemeSwitcherUITests */ = {
+		AFA4E0572DACA08700A647DE /* SceneSwitcherUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherUITests" */;
+			buildConfigurationList = AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcherUITests" */;
 			buildPhases = (
 				AFA4E0542DACA08700A647DE /* Sources */,
 				AFA4E0552DACA08700A647DE /* Frameworks */,
@@ -154,13 +154,13 @@
 				AFA4E05A2DACA08700A647DE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				AFA4E05B2DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+				AFA4E05B2DACA08700A647DE /* SceneSwitcherUITests */,
 			);
-			name = WallpaperThemeSwitcherUITests;
+			name = SceneSwitcherUITests;
 			packageProductDependencies = (
 			);
 			productName = WallpaperThemeSwitcherUITests;
-			productReference = AFA4E0582DACA08700A647DE /* WallpaperThemeSwitcherUITests.xctest */;
+			productReference = AFA4E0582DACA08700A647DE /* SceneSwitcherUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "WallpaperThemeSwitcher" */;
+			buildConfigurationList = AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "SceneSwitcher" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */,
-				AFA4E04D2DACA08700A647DE /* WallpaperThemeSwitcherTests */,
-				AFA4E0572DACA08700A647DE /* WallpaperThemeSwitcherUITests */,
+				AFA4E03F2DACA08700A647DE /* SceneSwitcher */,
+				AFA4E04D2DACA08700A647DE /* SceneSwitcherTests */,
+				AFA4E0572DACA08700A647DE /* SceneSwitcherUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		AFA4E0502DACA08700A647DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */;
+			target = AFA4E03F2DACA08700A647DE /* SceneSwitcher */;
 			targetProxy = AFA4E04F2DACA08700A647DE /* PBXContainerItemProxy */;
 		};
 		AFA4E05A2DACA08700A647DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AFA4E03F2DACA08700A647DE /* WallpaperThemeSwitcher */;
+			target = AFA4E03F2DACA08700A647DE /* SceneSwitcher */;
 			targetProxy = AFA4E0592DACA08700A647DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -307,7 +307,7 @@
 				DEVELOPMENT_TEAM = 2W98Y9LVLU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -371,7 +371,7 @@
 				DEVELOPMENT_TEAM = 2W98Y9LVLU;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -395,7 +395,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = WallpaperThemeSwitcher/WallpaperThemeSwitcher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SceneSwitcher/SceneSwitcherDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -403,16 +405,17 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper Theme Switcher";
+				INFOPLIST_KEY_CFBundleDisplayName = "Scene Switcher";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.SceneSwitcher;
+				PRODUCT_NAME = "Scene Switcher";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -425,7 +428,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = WallpaperThemeSwitcher/WallpaperThemeSwitcher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SceneSwitcher/SceneSwitcher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -433,16 +438,17 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper Theme Switcher";
+				INFOPLIST_KEY_CFBundleDisplayName = "Scene Switcher";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.WallpaperThemeSwitcher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Tinkernerd.SceneSwitcher;
+				PRODUCT_NAME = "Scene Switcher";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -463,7 +469,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WallpaperThemeSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WallpaperThemeSwitcher";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SceneSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SceneSwitcher";
 			};
 			name = Debug;
 		};
@@ -481,7 +487,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WallpaperThemeSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WallpaperThemeSwitcher";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SceneSwitcher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SceneSwitcher";
 			};
 			name = Release;
 		};
@@ -520,7 +526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "WallpaperThemeSwitcher" */ = {
+		AFA4E03B2DACA08700A647DE /* Build configuration list for PBXProject "SceneSwitcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFA4E0602DACA08700A647DE /* Debug */,
@@ -529,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcher" */ = {
+		AFA4E0622DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFA4E0632DACA08700A647DE /* Debug */,
@@ -538,7 +544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherTests" */ = {
+		AFA4E0652DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcherTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFA4E0662DACA08700A647DE /* Debug */,
@@ -547,7 +553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "WallpaperThemeSwitcherUITests" */ = {
+		AFA4E0682DACA08700A647DE /* Build configuration list for PBXNativeTarget "SceneSwitcherUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFA4E0692DACA08700A647DE /* Debug */,

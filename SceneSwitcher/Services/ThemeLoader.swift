@@ -12,10 +12,11 @@ struct ThemeGroup {
 }
 
 class ThemeLoader {
-    static var defaultPath: URL {
-        FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Pictures/Wallpapers")
-    }
+    static let defaultPath: URL = {
+        let pictures = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
+        return pictures.appendingPathComponent("Wallpapers")
+    }()
+
 
 
     static var currentDirectory: URL {

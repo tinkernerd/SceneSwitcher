@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PreviewView: View {
+struct PreviewTab: View {
     @State private var currentWallpaper: URL? = WallpaperManager.currentWallpaper()
     @State private var currentThemeName: String = UserDefaults.standard.string(forKey: "lastUsedTheme") ?? "None"
 
@@ -42,7 +42,9 @@ struct PreviewView: View {
                     else { NSCursor.pop() }
                 }
             } else {
-                Text("None")
+                Text("No Theme Loaded")
+                    .italic()
+                    .foregroundColor(.secondary)
             }
 
             Divider()
@@ -87,7 +89,6 @@ struct PreviewView: View {
             Spacer()
         }
         .padding()
-        .frame(minWidth: 500, minHeight: 520)
         .onAppear {
             currentWallpaper = WallpaperManager.currentWallpaper()
             currentThemeName = UserDefaults.standard.string(forKey: "lastUsedTheme") ?? "None"
@@ -102,8 +103,4 @@ struct PreviewView: View {
             .map { $0.capitalized }
             .joined(separator: " ")
     }
-}
-
-#Preview {
-    PreviewView()
 }
