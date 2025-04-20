@@ -14,17 +14,37 @@ struct FlickrPhoto: Codable, Identifiable {
     let farm: Int
     let server: String
     let secret: String
+
+    // Sizes (optional depending on extras returned)
     let width_o: Int?
     let height_o: Int?
+    let width_l: Int?
+    let height_l: Int?
+    let width_c: Int?
+    let height_c: Int?
+
+    let url_o: String?
+    let url_l: String?
+    let url_c: String?
 
     // MARK: - Orientation filter helpers
     var isLandscape: Bool {
-        guard let w = width_o, let h = height_o else { return false }
-        return w > h
+        if let w = width_o, let h = height_o {
+            return w > h
+        } else if let w = width_l, let h = height_l {
+            return w > h
+        } else if let w = width_c, let h = height_c {
+            return w > h
+        } else {
+            return true // fallback: assume landscape
+        }
     }
 
-    // MARK: - Full resolution image URL (_o = original)
+    // MARK: - Best available image URL
     var imageURL: URL? {
-        URL(string: "https://live.staticflickr.com/\(server)/\(id)_\(secret)_o.jpg")
+        if let url = url_o { return URL(string: url) }
+        if let url = url_l { return URL(string: url) }
+        if let url = url_c { return URL(string: url) }
+        return nil
     }
 }

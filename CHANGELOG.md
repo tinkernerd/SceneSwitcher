@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 Follows [Semantic Versioning](./VERSIONING.md). 
 // I solemnly swear I won't abuse PATCH bumps for typos (probably) — This changelog is mainly for developers (and a little for humans too)
 
+
 ---
 ## [0.2.0] - 2025-04-19
 

@@ -31,6 +31,8 @@ SceneSwitcher/
 │       ├── FlickrAlbumsTab.swift
 │       ├── PreviewTab.swift
 │       └── AboutTab.swift
+├── Utilities/
+│   └── AppLog.swift        # Terminal/file logging handler
 │
 ├── Components/
 │   └── CocoaTextField.swift
@@ -86,6 +88,8 @@ git push origin v0.2.0
 | Wallpaper switching       | `WallpaperManager.swift`    |
 | Flickr API integration    | `FlickrService.swift`       |
 | Download manager          | `FlickrImageDownloader.swift` |
+| Logging system            | `AppLog.swift`                |
+
 
 ---
 
@@ -110,7 +114,9 @@ git push origin v0.2.0
   ```bash
   rm -rf ~/Library/Containers/Tinkernerd.SceneSwitcher
   ```
-
+  
+- Logs stored in `~/Documents/SceneSwitcherLogs`
+- Logs rotate daily and include log level in filename
 - Log output appears in Xcode console or macOS Console.app
 
 ---

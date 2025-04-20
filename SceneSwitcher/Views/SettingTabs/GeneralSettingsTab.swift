@@ -33,7 +33,22 @@ struct GeneralSettingsTab: View {
                     }
                 }
 
+                Button("Set to Default Folder") {
+                    let defaultURL = ThemeLoader.defaultPath
+
+                    if !FileManager.default.fileExists(atPath: defaultURL.path) {
+                        do {
+                            try FileManager.default.createDirectory(at: defaultURL, withIntermediateDirectories: true)
+                        } catch {
+                            return
+                        }
+                    }
+
+                    SettingsStore.shared.wallpaperDirectory = defaultURL.path
+                }
+
                 Toggle("Treat single-subtheme folders as flat themes", isOn: $settings.flattenSingleSubthemes)
+
                 Divider()
 
                 Toggle("Launch at Login", isOn: $settings.launchAtLogin)
@@ -55,6 +70,7 @@ struct GeneralSettingsTab: View {
             }
 
             Divider()
+
             Text("Flickr API")
                 .font(.headline)
 
@@ -93,20 +109,6 @@ struct GeneralSettingsTab: View {
 
                 Button("Remove Flickr API Key") {
                     SettingsStore.shared.flickrApiKey = ""
-                }
-
-                Button("Set to Default Folder") {
-                    let defaultURL = ThemeLoader.defaultPath
-
-                    if !FileManager.default.fileExists(atPath: defaultURL.path) {
-                        do {
-                            try FileManager.default.createDirectory(at: defaultURL, withIntermediateDirectories: true)
-                        } catch {
-                            return
-                        }
-                    }
-
-                    SettingsStore.shared.wallpaperDirectory = defaultURL.path
                 }
             }
         }

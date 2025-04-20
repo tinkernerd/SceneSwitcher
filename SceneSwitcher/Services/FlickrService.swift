@@ -32,7 +32,7 @@ class FlickrService {
             return
         }
 
-        let urlString = "\(baseURL)?method=flickr.photosets.getPhotos&api_key=\(apiKey)&photoset_id=\(photosetId)&user_id=\(userId)&extras=width_o,height_o&format=json&nojsoncallback=1"
+        let urlString = "\(baseURL)?method=flickr.photosets.getPhotos&api_key=\(apiKey)&photoset_id=\(photosetId)&user_id=\(userId)&extras=url_o,url_l,url_c,width_o,height_o,width_l,height_l,width_c,height_c&format=json&nojsoncallback=1"
         AppLog.info("📸 Fetching album photos: \(urlString)")
 
         guard let url = URL(string: urlString) else {

@@ -1,10 +1,3 @@
-//
-//  AboutTab.swift
-//  WallpaperThemeSwitcher
-//
-//  Created by Nick Stull on 4/18/25.
-//
-
 import SwiftUI
 
 struct AboutTab: View {
@@ -25,7 +18,7 @@ struct AboutTab: View {
                     Text("Wallpaper Theme Switcher")
                         .font(.headline)
 
-                    Text("Version 0.0.1")
+                    Text("Version \(appVersion)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -47,11 +40,15 @@ struct AboutTab: View {
             }
             .buttonStyle(LinkButtonStyle())
 
-
             Spacer()
         }
         .padding(24)
     }
+
+    var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+    }
+
     func checkForUpdates() {
         guard let url = URL(string: "https://api.github.com/repos/tinkernerd/SceneSwitcher/releases/latest") else { return }
 
@@ -65,7 +62,7 @@ struct AboutTab: View {
                 if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                    let latestVersion = json["tag_name"] as? String {
 
-                    let current = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+                    let current = appVersion
 
                     if latestVersion == "v\(current)" {
                         DispatchQueue.main.async {
@@ -85,5 +82,4 @@ struct AboutTab: View {
             }
         }.resume()
     }
-
 }
