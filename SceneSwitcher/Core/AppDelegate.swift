@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var rotationTimer: Timer?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.setActivationPolicy(.regular)
+        NSApp.setActivationPolicy(.accessory)
         setupMenu()
 
         if let mainMenu = NSApp.mainMenu {
